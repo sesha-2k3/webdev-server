@@ -4,6 +4,7 @@ import cors from "cors";
 import session from "express-session";
 import db from "./Kambaz/Database";
 import UserRoutes from "./Kambaz/Users/routes";
+import CourseRoutes from "./Kambaz/Courses/routes";
 import Hello from "./Hello";
 import Lab5 from "./Lab5/index";
 const app = express();
@@ -26,6 +27,7 @@ if (process.env.SERVER_ENV !== "development") {
 app.use(session(sessionOptions));
 app.use(express.json());
 UserRoutes(app, db);
+CourseRoutes(app, db);
 Lab5(app);
 Hello(app);
 app.listen(process.env.PORT || 4000);
